@@ -12,13 +12,14 @@ class Tidal {
    */
   constructor(options = {}) {
     this.url = 'https://api.tidal.com/v1';
-    this.webToken = 'wdgaB1CilGA-S_s2';
+    this.webToken = 'BI218mwp9ERZ3PFI';
     this.countryCode = options.countryCode || 'US';
     this.limit = options.limit || 1000;
     this.api = axios.create({
       baseURL: this.url,
       headers: {
         'x-tidal-token': this.webToken,
+        Origin: 'http://listen.tidal.com',
       },
     });
     // some base params for GET requests
@@ -67,6 +68,26 @@ class Tidal {
     return res.data;
   }
 
+  /**
+     * search for artists, albums, tracks, or playlists
+     * @param {string} trackId - id of a track
+     * @param {string} streamQuality - stream quality ('LOW', 'HIGH', 'LOSSLESS')
+     * @returns {Promise}
+     * @reject {Error}
+     */
+  async getTrackStreamUrl(trackId, streamQuality = 'HIGH') {
+    const streamQualityTypes = ['LOW', 'HIGH', 'LOSSLESS'];
+
+    if (streamQualityTypes.indexOf(streamQuality) < 0) {
+      throw new Error(`${streamQuality} is not a valid stream quality('LOW', 'HIGH', 'LOSSLESS' are valid).`);
+    }
+
+    const res = await this.api({
+      method: 'GET',
+      url: `/tracks/${trackId}/streamUrl?soundQuality=${streamQuality}&countryCode=${this.countryCode}&${this.params}`,
+    });
+    return res.data.url;
+  }
   /**
   * search for artists, albums, tracks, or playlists
   * @param {string} query - search query

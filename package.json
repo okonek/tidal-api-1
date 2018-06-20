@@ -1,6 +1,6 @@
 {
-  "name": "tidal-api-wrapper",
-  "version": "1.6.1",
+  "name": "tidal-api-wrapper-okonek",
+  "version": "1.7.7",
   "description": "An unofficial API wrapper for Tidal Music",
   "main": "lib/index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/spencercharest/tidal-api.git"
+    "url": "git+https://github.com/okonek/tidal-api-1.git"
   },
   "keywords": [
     "flac",
@@ -28,9 +28,9 @@
   "author": "Spencer Charest",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/spencercharest/tidal-api/issues"
+    "url": "https://github.com/okonek/tidal-api-1/issues"
   },
-  "homepage": "https://github.com/spencercharest/tidal-api#readme",
+  "homepage": "https://github.com/okonek/tidal-api-1.git#readme",
   "dependencies": {
     "axios": "^0.17.0",
     "babel-runtime": "^6.26.0"
