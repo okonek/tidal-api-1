@@ -640,10 +640,7 @@ class Tidal {
       url: `/users/${this.userId}/playlists?${this.params}`,
     });
 
-    const { items } = res.data;
-
-    const playlists = items.map(item => item.item);
-
+    const { playlists } = res.data;
     return playlists;
   }
   /**
