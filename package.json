@@ -1,6 +1,6 @@
 {
   "name": "tidal-api-wrapper-okonek",
-  "version": "1.8.1",
+  "version": "1.8.4",
   "description": "An unofficial API wrapper for Tidal Music",
   "main": "lib/index.js",
   "scripts": {

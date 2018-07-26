@@ -640,8 +640,7 @@ class Tidal {
       url: `/users/${this.userId}/playlists?${this.params}`,
     });
 
-    const { playlists } = res.data;
-    return playlists;
+    return res.data.items;
   }
   /**
   * get valid urls to artist pictures
