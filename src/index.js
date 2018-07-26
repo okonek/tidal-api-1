@@ -621,6 +621,32 @@ class Tidal {
   }
 
   /**
+   * get your created playlists (requires login() to be called)
+   * @example tidal.getUserPlaylists()
+   * @returns {Promise}
+   * @fulfil {Array} - an array of playlist objects
+   * @reject {Error}
+   * @see {@link Tidal#login} - login method must be called first
+   * @see {@link Tidal#getPlaylist} - playlist object example
+   */
+  async getUserPlaylists() {
+
+    if (!this.userId || !this.sessionId) {
+      throw new Error('You must call the login method first');
+    }
+
+    const res = await this.api({
+      method: 'GET',
+      url: `/users/${this.userId}/playlists?${this.params}`,
+    });
+
+    const { items } = res.data;
+
+    const playlists = items.map(item => item.item);
+
+    return playlists;
+  }
+  /**
   * get valid urls to artist pictures
   * @param {string} uuid - artist picture uuid (can be found as picture property in artist object)
   * @example tidal.artistPicToUrl('04d63cd8-a1a5-42e0-b1ec-8e336b7d9200')
